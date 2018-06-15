@@ -2,7 +2,7 @@ import requests
 import re
 from bs4 import BeautifulSoup
 
-def getOfferList:
+def getOfferList():
 	
 	page = requests.get("https://www.americanexpress.com/au/network/shopping.html")
 
@@ -12,13 +12,16 @@ def getOfferList:
 
 	for elem in soup.find_all('a', href=re.compile("offer=")):
 		offerList.append(elem['trackingid'])
-	
+	print(offerList)
 	return offerList
 
-def getOfferDetails:
+def getOfferDetails(offerList):
 	
+	offerDetails = []
 	offerTitles = []
 	offerDescriptions = []
+
+
 
 	for i in offerList:
 		page = requests.get("https://www.americanexpress.com/au/network/shopping/doe-offer-detail.html?offer=" + i)
@@ -35,6 +38,8 @@ def getOfferDetails:
 
 def main():
 
-	offerList = getOfferList
+	offerList = getOfferList()
 
 	getOfferDetails(offerList)
+
+main()
