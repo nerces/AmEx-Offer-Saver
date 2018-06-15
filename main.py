@@ -17,13 +17,14 @@ def getOfferList:
 
 def getOfferDetails:
 	
-	titles = []
-	description = []
+	offerTitles = []
+	offerDescriptions = []
 
 	for i in offerList:
 		page = requests.get("https://www.americanexpress.com/au/network/shopping/doe-offer-detail.html?offer=" + i)
 		soup = BeautifulSoup(page.content, 'html.parser')
-
+		print(soup)
+		print("-------------------------------------------------------------------")
 
 
 
