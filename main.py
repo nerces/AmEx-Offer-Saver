@@ -1,6 +1,7 @@
 import requests
 import re
 from bs4 import BeautifulSoup
+from selenium import webdriver
 
 def getOfferList():
 	
@@ -20,7 +21,6 @@ def getOfferDetails(offerList):
 	offerTitles = []
 	offerDescriptions = []
 
-
 	for i in offerList:
 		offerCodes.append(i)
 		page = requests.get("https://www.americanexpress.com/au/network/shopping/doe-offer-detail.html?offer=" + i)
@@ -38,12 +38,25 @@ def getOfferDetails(offerList):
 	detailedOfferList.append(offerTitles)
 	detailedOfferList.append(offerDescriptions)
 
-	print(detailedOfferList)
+	return detailedOfferList
 
+def selectOffers(detailedOfferList):
 
+	print("The current active offers are:\n")
+	
+	for i in range(0,len(detailedOfferList[0])):
+		print("Offer " + str(i + 1) + ":")
+		print(detailedOfferList[1][i])
+		print(detailedOfferList[2][i])
+		print("\n")
 
+	offerNumber = input("Please enter the number of the offer you would like to registers your cards for: ")
 
+	offerID = detailedOfferList[0][int(offerNumber) - 1]
 
+	return offerID
+
+def registerCards(offerID)
 
 
 
@@ -52,6 +65,12 @@ def main():
 
 	offerList = getOfferList()
 
-	getOfferDetails(offerList)
+	detailedOfferList = getOfferDetails(offerList)
+
+	offerNumber = selectOffers(detailedOfferList)
+
+	registerCards(offerID)
+
+
 
 main()
