@@ -25,10 +25,11 @@ pip install selenium openpyxl beautifulsoup4
 
 ## Running the program
 
-1. Go to the directory you downloaded the file and extract the file to a folder
-2. Right click the folder -> Properties -> highlight all the text to the right of "Location:" -> right click -> copy
-3. Open Powershell (Windows) or Terminal (macOS/Linux)
-4. Type in "cd" and then right click to paste the path - eg.
+1. Download the .zip file [here](https://github.com/nerces/AmEx-Offer-Saver/archive/master.zip)
+2. Go to the directory you downloaded the file and extract the file to a folder
+3. Right click the folder -> Properties -> highlight all the text to the right of "Location:" -> right click -> copy
+4. Open Powershell (Windows) or Terminal (macOS/Linux)
+5. Type in "cd" and then right click to paste the path - eg.
 ```
 cd <paste path here>
 ```
@@ -36,11 +37,11 @@ It will then look something like:
 ```
 cd C:\Users\YourUsername\Desktop\AmEx-Offer-Saver
 ```
-5. Once you're in the folder, it's time to run the actual program. Type in the following:
+6. Once you're in the folder, it's time to run the actual program. Type in the following:
 ```
 python main.py
 ```
-6. The program will do its thing and then ask for your input. Read the onscreen instructions and you're all ready to go!
+7. The program will do its thing and then ask for your input. Read the onscreen instructions and you're all ready to go!
 
 ## Built With
 
