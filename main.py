@@ -71,7 +71,6 @@ def selectOffers(detailedOfferList):
 
 	return offerID
 	
-
 def registerCards(offerID):
 	#Path to the web driver
 	driver = 'chromedriver.exe'
