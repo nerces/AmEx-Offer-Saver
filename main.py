@@ -70,6 +70,7 @@ def selectOffers(detailedOfferList):
 	offerID = detailedOfferList[0][int(offerNumber) - 1]
 
 	return offerID
+	
 
 def registerCards(offerID):
 	#Path to the web driver
