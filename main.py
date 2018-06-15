@@ -12,22 +12,34 @@ def getOfferList():
 
 	for elem in soup.find_all('a', href=re.compile("offer=")):
 		offerList.append(elem['trackingid'])
-	print(offerList)
 	return offerList
 
 def getOfferDetails(offerList):
 	
-	offerDetails = []
+	offerCodes = []
 	offerTitles = []
 	offerDescriptions = []
 
 
-
 	for i in offerList:
+		offerCodes.append(i)
 		page = requests.get("https://www.americanexpress.com/au/network/shopping/doe-offer-detail.html?offer=" + i)
 		soup = BeautifulSoup(page.content, 'html.parser')
-		print(soup)
-		print("-------------------------------------------------------------------")
+		
+		for title in soup.find_all("h1", class_="supplier"):
+			offerTitles.append(title.text.strip())
+
+		for description in soup.find_all("div", class_="offer-details"):
+			des = description.find('h2')
+			offerDescriptions.append(des.text.strip())
+
+	detailedOfferList = []
+	detailedOfferList.append(offerCodes)
+	detailedOfferList.append(offerTitles)
+	detailedOfferList.append(offerDescriptions)
+
+	print(detailedOfferList)
+
 
 
 
