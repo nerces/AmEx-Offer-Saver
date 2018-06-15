@@ -2,11 +2,6 @@
 """
 This program scrapes the current offers that are available on the AmEx website and then imports an 
 XLSX file and uses the data in it to register multiple AmEx cards to the user's credit statement offer of choice.
-
-Requirements:
-selenium | pip install selenium
-openpyxl | pip install openpyxl
-beautifulsoup4 | pip install beautifulsoup4
 """
 
 import requests
@@ -78,7 +73,7 @@ def selectOffers(detailedOfferList):
 
 def registerCards(offerID):
 	#Path to the web driver
-	driver = 'C:\\Users\\Nerces\\Desktop\\chromedriver_win32\\chromedriver.exe'
+	driver = 'chromedriver.exe'
 
 	browser = webdriver.Chrome(driver)
 
