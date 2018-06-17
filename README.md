@@ -22,6 +22,13 @@ pip install selenium openpyxl beautifulsoup4
 ```
 3. Press "Enter" and all 3 packages will start to download and install
 
+## Using the Excel sheet
+
+The Excel sheet is simple to use. Leave the first row as it is and **only edit** the rows you need. First name goes in column 1, last name goes in column 2, card number goes in column 3, and email address goes in column 4.
+
+See the following example for reference:
+
+![alt text](Examples/excel.png "Logo Title Text 1")
 
 ## Running the program
 
