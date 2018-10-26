@@ -62,8 +62,8 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ---------------------------------------
 ## To-Do
 
-- [x] Headless driver
-- [] Failsafe for user input
-- [] Choose multiple offers at a time
-- [x] Add checking system to track successful/failed registrations
-- [] GUI
+- [x] Headless driver  
+- [ ] Failsafe for user input  
+- [ ] Choose multiple offers at a time  
+- [x] Add checking system to track successful/failed registrations  
+- [ ] GUI
