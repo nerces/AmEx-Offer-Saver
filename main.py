@@ -87,17 +87,17 @@ def registerCards(offerID):
 	    cardNumber = sheet.cell(row = i, column = 3).value
 	    email = sheet.cell(row = i, column = 4).value
 
-	r = requests.post("https://www.americanexpress.com/gemservices/shopping/enrolment.submit/au/",
-		data = {'firstName' : '%s' % firstName,
-		'lastName' : '%s' % lastName,
-		'email' : '%s' % email,
-		'cardNumber' : '%s' % cardNumber,
-		'offerId' : offerID})
-	if r.status_code != 200:
-		print(r.status_code, r.reason)
-		sys.exit("Looks like we're having some problems with your internet connection or the AmEx servers.\nNow exiting.")
-	else:
-		print(r.text[:300])
+		r = requests.post("https://www.americanexpress.com/gemservices/shopping/enrolment.submit/au/",
+			data = {'firstName' : '%s' % firstName,
+			'lastName' : '%s' % lastName,
+			'email' : '%s' % email,
+			'cardNumber' : '%s' % cardNumber,
+			'offerId' : offerID})
+		if r.status_code != 200:
+			print(r.status_code, r.reason)
+			sys.exit("Looks like we're having some problems with your internet connection or the AmEx servers.\nNow exiting.")
+		else:
+			print(r.text[:300])
 
 def main():
 
