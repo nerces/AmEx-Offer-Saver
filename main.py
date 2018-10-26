@@ -1,16 +1,15 @@
 # file: main.py
 """
 This program scrapes the current offers that are available on the AmEx website and then imports an 
-XLSX file and uses the data in it to register multiple AmEx cards to the user's credit statement offer of choice.
+xlsx file and uses the data in it to register multiple AmEx cards to the user's credit statement offer of choice.
 """
 
 import requests
-import re
 from bs4 import BeautifulSoup
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
+import re
+import csv
 import openpyxl
-import time
+import sys
 
 def getOfferList():
 	
@@ -70,12 +69,8 @@ def selectOffers(detailedOfferList):
 	offerID = detailedOfferList[0][int(offerNumber) - 1]
 
 	return offerID
-	
-def registerCards(offerID):
-	#Path to the web driver
-	driver = 'chromedriver.exe'
 
-	browser = webdriver.Chrome(driver)
+def registerCards(offerID):
 
 	#Loads the Excel workbook
 	data = openpyxl.load_workbook('details.xlsx')
@@ -84,56 +79,31 @@ def registerCards(offerID):
 	#Gets the maximum row in the active sheet
 	rowCount = sheet.max_row
 
-	for i in range (2, int(rowCount + 1)):
-	    #Goes to the offer specific URL
-	    browser.get("https://www.americanexpress.com/au/network/shopping/doe-offer-detail.html?offer=" + offerID)
+	for i in range (2, rowCount):
 
 	    #Details for the form extracted from the Excel sheet
 	    firstName = sheet.cell(row = i, column = 1).value
 	    lastName = sheet.cell(row = i, column = 2).value
 	    cardNumber = sheet.cell(row = i, column = 3).value
-	    emailAddress = sheet.cell(row = i, column = 4).value
+	    email = sheet.cell(row = i, column = 4).value
 
-	    #Finds and clicks the "Save to card" button
-	    button = browser.find_element_by_css_selector('.btn.btn-doe-detail.trackable').click()
-
-	    #Fills out the firstName text box
-	    elem_firstName = browser.find_element_by_name("firstName")
-	    elem_firstName.send_keys(firstName)
-
-	    #Fills out the lastName text box
-	    elem_lastName = browser.find_element_by_name("lastName")
-	    elem_lastName.send_keys(lastName)
-
-	    #Fills out the cardNumber text box
-	    elem_cardNumber = browser.find_element_by_name("cardNumber")
-	    elem_cardNumber.send_keys(str(cardNumber))
-
-	    #Fills out the emailAddress text box
-	    elem_emailAddress = browser.find_element_by_name("emailAddress")
-	    elem_emailAddress.send_keys(emailAddress)
-
-	    #Sleeps for 1 second before submitting the form to prevent AmEx network error
-	    time.sleep(1)
-	    elem_emailAddress.send_keys(Keys.RETURN)
-
-	    time.sleep(3)
-	    browser.delete_all_cookies()
-
-	#Closes the browser
-	browser.close()
-
+	r = requests.post("https://www.americanexpress.com/gemservices/shopping/enrolment.submit/au/",
+		data = {'firstName' : '%s' % firstName,
+		'lastName' : '%s' % lastName,
+		'email' : '%s' % email,
+		'cardNumber' : '%s' % cardNumber,
+		'offerId' : offerID})
+	if r.status_code != 200:
+		print(r.status_code, r.reason)
+		sys.exit("Looks like we're having some problems with your internet connection or the AmEx servers.\nNow exiting.")
+	else:
+		print(r.text[:300])
 
 def main():
 
 	offerList = getOfferList()
-
 	detailedOfferList = getOfferDetails(offerList)
-
 	offerID = selectOffers(detailedOfferList)
-
-	offerID = registerCards(offerID)
-
-
+	registerCards(offerID)
 
 main()
