@@ -28,7 +28,7 @@ The Excel sheet is simple to use. Leave the first row as it is and **only edit**
 
 See the following example for reference:
 
-![alt text](Examples/excel.png "Logo Title Text 1")
+![alt text](Examples/excel.png "Excel Sheet Layout Example")
 
 ## Running the program
 
@@ -62,8 +62,8 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ---------------------------------------
 ## To-Do
 
-- [x] Headless driver
-- [] Failsafe for user input
-- [] Choose multiple offers at a time
-- [x] Add checking system to track successful/failed registrations
-- [] GUI
+- [x] Headless driver  
+- [ ] Failsafe for user input  
+- [ ] Choose multiple offers at a time  
+- [x] Add checking system to track successful/failed registrations  
+- [ ] GUI
