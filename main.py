@@ -81,11 +81,11 @@ def registerCards(offerID):
 
 	for i in range (2, rowCount):
 
-	    #Details for the form extracted from the Excel sheet
-	    firstName = sheet.cell(row = i, column = 1).value
-	    lastName = sheet.cell(row = i, column = 2).value
-	    cardNumber = sheet.cell(row = i, column = 3).value
-	    email = sheet.cell(row = i, column = 4).value
+		#Details for the form extracted from the Excel sheet
+		firstName = sheet.cell(row = i, column = 1).value
+		lastName = sheet.cell(row = i, column = 2).value
+		cardNumber = sheet.cell(row = i, column = 3).value
+		email = sheet.cell(row = i, column = 4).value
 
 		r = requests.post("https://www.americanexpress.com/gemservices/shopping/enrolment.submit/au/",
 			data = {'firstName' : '%s' % firstName,
