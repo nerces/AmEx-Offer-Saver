@@ -67,3 +67,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 - [ ] Choose multiple offers at a time  
 - [x] Add checking system to track successful/failed registrations  
 - [ ] GUI
+- [ ] Create a version that will automate offer registrations using a keyword and/or vendor list
