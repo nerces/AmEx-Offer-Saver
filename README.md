@@ -18,7 +18,7 @@ Python3
 1. Open Powershell (Windows) or Terminal (macOS/Linux)
 2. Copy and paste the following (right click in Powershell/Terminal to paste) or type it in manually
 ```
-pip install openpyxl beautifulsoup4
+pip install openpyxl beautifulsoup4 requests
 ```
 3. Press "Enter" and all 3 packages will start to download and install
 
